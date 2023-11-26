@@ -165,19 +165,19 @@ Options:
 amd64:
 
 ```bash
-docker pull ghcr.io/home-assistant/amd64-builder:latest
+docker pull ghcr.io/maduxa/amd64-builder:latest
 ```
 
 armv7:
 
 ```bash
-docker pull ghcr.io/home-assistant/armv7-builder:latest
+docker pull ghcr.io/maduxa/armv7-builder:latest
 ```
 
 aarch64:
 
 ```bash
-docker pull ghcr.io/home-assistant/aarch64-builder:latest
+docker pull ghcr.io/maduxa/aarch64-builder:latest
 ```
 
 ## Run
@@ -189,7 +189,7 @@ docker run \
 	--rm \
 	--privileged \
 	-v ~/.docker:/root/.docker \
-    ghcr.io/home-assistant/amd64-builder:latest \
+    ghcr.io/maduxa/amd64-builder:latest \
 		--all \
 		-t addon-folder \
 		-r https://github.com/xy/addons \
@@ -204,7 +204,7 @@ docker run \
 	--privileged \
 	-v ~/.docker:/root/.docker \
 	-v /my_addon:/data \
-    ghcr.io/home-assistant/amd64-builder:latest \
+    ghcr.io/maduxa/amd64-builder:latest \
 		--all \
 		-t /data
 ```
@@ -220,7 +220,7 @@ docker run \
 	-v ~/.docker:/root/.docker \
 	-v /var/run/docker.sock:/var/run/docker.sock:ro \
 	-v /my_addon:/data \
-    ghcr.io/home-assistant/amd64-builder:latest \
+    ghcr.io/maduxa/amd64-builder:latest \
 		--all \
 		-t /data
 ```
@@ -238,7 +238,7 @@ function builder() {
 	  --privileged \
 	  -v ${PWD}:/data \
 	  -v /var/run/docker.sock:/var/run/docker.sock:ro \
-      ghcr.io/home-assistant/amd64-builder:latest --target /data $@
+      ghcr.io/maduxa/amd64-builder:latest --target /data $@
 }
 ```
 
@@ -251,5 +251,5 @@ $ builder --amd64 --docker-hub agners
 ## Help
 
 ```bash
-docker run --rm --privileged ghcr.io/home-assistant/amd64-builder:latest --help
+docker run --rm --privileged ghcr.io/maduxa/amd64-builder:latest --help
 ```
