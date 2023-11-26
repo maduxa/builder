@@ -24,16 +24,16 @@ runs:
 
     - shell: bash
       run: |
-        docker pull ghcr.io/maduxa/amd64-builder:${{ steps.version.outputs.version }}
+        docker pull ghcr.io/home-assistant/amd64-builder:${{ steps.version.outputs.version }}
         cosign verify \
           --certificate-oidc-issuer https://token.actions.githubusercontent.com \
           --certificate-identity-regexp https://github.com/home-assistant/builder/.* \
-          ghcr.io/maduxa/amd64-builder:${{ steps.version.outputs.version }}
+          ghcr.io/home-assistant/amd64-builder:${{ steps.version.outputs.version }}
 
     - shell: bash
       id: builder
       run: |
-        builder=$(docker images ghcr.io/maduxa/amd64-builder:${{ steps.version.outputs.version }} -q)
+        builder=$(docker images ghcr.io/home-assistant/amd64-builder:${{ steps.version.outputs.version }} -q)
         echo "id=$builder" >> "$GITHUB_OUTPUT"
 
     - shell: bash
@@ -47,7 +47,7 @@ runs:
             -v ~/.docker:/root/.docker \
             -v ${{ github.workspace }}:/data \
             --env-file "${{ github.action_path }}/env_file" \
-            ghcr.io/maduxa/amd64-builder:${{ steps.version.outputs.version }} \
+            ghcr.io/home-assistant/amd64-builder:${{ steps.version.outputs.version }} \
             ${{ inputs.args }}
 
     - shell: bash
